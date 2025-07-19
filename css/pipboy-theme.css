@@ -1,18 +1,62 @@
 @font-face {
   font-family: 'VT323';
-  src: url('https://fonts.gstatic.com/s/vt323/v12/pxiKyp0ihIEF2isfFJXUdVNF.woff2') format('woff2');
+  src: url('../fonts/VT323-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 body {
+  font-family: 'VT323', monospace;
   background-color: #0f0f0f;
   color: #00ff00;
-  font-family: 'VT323', monospace;
+  font-size: 1.6em;
+  line-height: 1.75;
+  margin: 0;
   padding: 2em;
-  line-height: 1.8;
-  font-size: 22px;
+  text-shadow: 0 0 2px #00ff00;
+}
+
+.terminal {
+  max-width: 960px;
+  margin: auto;
+}
+
+h1 {
+  text-transform: uppercase;
+  border-bottom: 1px dashed #00ff00;
+  padding-bottom: 0.3em;
+  margin-bottom: 1em;
+}
+
+a {
+  color: #00ff00;
+  text-decoration: underline;
+}
+a:hover {
+  text-shadow: 0 0 5px #0f0;
+}
+
+.prompt {
+  color: #00ff00;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.7; }
+}
+.flicker {
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+  font-weight: bold;
 }
 
 .scanlines {
@@ -27,27 +71,5 @@ body {
     transparent 4px
   );
   pointer-events: none;
-}
-
-.terminal {
-  max-width: 800px;
-  margin: auto;
-}
-
-h1 {
-  color: #00ff00;
-  text-transform: uppercase;
-  border-bottom: 1px dashed #00ff00;
-  padding-bottom: 0.2em;
-  margin-bottom: 1em;
-  font-size: 36px;
-}
-
-a {
-  color: #00ff00;
-  text-decoration: underline;
-}
-
-.prompt {
-  color: #00ff00;
+  z-index: 1000;
 }

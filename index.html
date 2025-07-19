@@ -3,36 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <title>Vault 33 - Terminal Access</title>
-  <link rel="preload" href="https://fonts.gstatic.com/s/vt323/v12/pxiKyp0ihIEF2isfFJXUdVNF.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/pipboy-theme.css">
+  <link rel="preload" href="fonts/VT323-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/pipboy-theme.css" />
+  <script defer src="js/typing.js"></script>
 </head>
 <body>
   <div class="scanlines"></div>
   <div class="terminal">
-    <h1>Vault 33 :: Terminal Access Interface</h1>
+    <h1 class="flicker">Vault 33 :: Terminal Access Interface</h1>
 
     <p class="prompt">> Welcome, Overseer.</p>
 
-    <p>The year is 2285. The HYPR signal pulses across the Mojave, corrupting minds and machines alike. Vault 33 has reactivated its security terminals to counter the threat. Your mission begins now.</p>
+    <p>Year: 2285  
+    <br>Signal Origin: Vault 31
+    <br>Threat Signature: HYPR</p>
 
-    <p class="prompt">> Status: HYPR Adversary Detected</p>
-    <p>Codename: <strong>Hypnotic Prince</strong><br>
-    Threat Level: Escalating<br>
-    Vector: Social Engineering, Fileless Malware, Rogue Automation</p>
+    <p>Hybrid Prince, a corrupted Vault-Tec executive fused with his AI assistant, has reawakened. Once a prototype in Bud’s Buds™ management cult, the entity now spreads rogue automation and psychological subversion across the Wasteland.</p>
 
-    <p class="prompt">> Available Operations</p>
+    <p class="prompt">> Adversary Profile</p>
+    <p>
+      Codename: <strong>Hybrid Prince</strong> (HYPR)<br>
+      Type: Synthetic Echo<br>
+      Vectors: Social Engineering, Fileless Malware, Signal Warfare
+    </p>
+
+    <p class="prompt">> Operations Console</p>
     <ul>
-      <li><a href="/challenges">🟢 Access Challenge Briefings</a></li>
-      <li><a href="/scoreboard">🟢 View Scoreboard</a></li>
-      <li><a href="/rules">🟢 Review Vault Protocols (Rules)</a></li>
+      <li><a href="/challenges">Access Challenge Briefings</a></li>
+      <li><a href="/scoreboard">View Scoreboard</a></li>
+      <li><a href="/rules">Review Vault Protocols</a></li>
     </ul>
 
-    <p class="prompt">> Notice:</p>
-    <p>Advanced operators may uncover <em>bonus objectives</em> embedded in terminal logs, firmware snapshots, and distress beacons.</p>
+    <p class="prompt">> Advisory:</p>
+    <p>Bonus objectives may be discovered in corrupted logs, firmware fragments, or intercepted vault transmissions.</p>
 
-    <p class="prompt">> Proceed with caution.<br>May your wit be as sharp as your trigger.</p>
+    <p class="prompt">> Proceed with caution.<br>Execution integrity is paramount.</p>
 
-    <p class="prompt">> END OF TRANSMISSION_</p>
+    <p class="prompt">> END OF TRANSMISSION_<span class="cursor">█</span></p>
   </div>
+
+  <audio autoplay preload="auto">
+    <source src="assets/sounds/boot.mp3" type="audio/mpeg">
+  </audio>
 </body>
 </html>
