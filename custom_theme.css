@@ -1,19 +1,63 @@
+/* --- Self-hosted Pip-Boy Font --- */
+@font-face {
+  font-family: 'VT323';
+  src: url('assets/fonts/VT323-Regular.woff2') format('woff2'),
+       url('assets/fonts/VT323-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #000;
+  font-family: 'VT323', monospace;
+  color: #48FB1B; /* Fallout green */
+  line-height: 1.4;
+  padding: 20px;
+}
+
+/* ... (rest of your CSS from earlier) ... */
+
+/* Pip-Boy Style CSS */
 body {
   background-color: black;
-  color: #00FF00;
   font-family: 'VT323', monospace;
+  color: rgb(72, 251, 27);
+  line-height: 1.4;
+  padding: 20px;
 }
 
-.pipboy-ui h1, .pipboy-ui p, .pipboy-ui pre {
-  color: #00FF00;
+h1, h2, h3 {
+  color: rgb(72, 251, 27);
 }
 
-a.start-btn {
-  color: black;
-  background-color: #00FF00;
-  padding: 10px;
-  display: inline-block;
-  font-weight: bold;
-  border: 2px solid #00FF00;
+a {
+  color: rgb(72, 251, 27);
   text-decoration: none;
+}
+
+a:hover {
+  text-shadow: 0 0 5px rgb(72, 251, 27);
+  color: rgb(110, 255, 90);
+}
+
+code, pre {
+  background-color: #111;
+  padding: 10px;
+  border: 1px solid rgb(72, 251, 27);
+  color: rgb(72, 251, 27);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+  background-color: #222;
+  border: 1px solid rgb(72, 251, 27);
+  color: rgb(72, 251, 27);
+  font-family: 'VT323', monospace;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(72, 251, 27);
+  color: black;
 }
