@@ -1,0 +1,19 @@
+body {
+  background-color: black;
+  color: #00FF00;
+  font-family: 'VT323', monospace;
+}
+
+.pipboy-ui h1, .pipboy-ui p, .pipboy-ui pre {
+  color: #00FF00;
+}
+
+a.start-btn {
+  color: black;
+  background-color: #00FF00;
+  padding: 10px;
+  display: inline-block;
+  font-weight: bold;
+  border: 2px solid #00FF00;
+  text-decoration: none;
+}
