@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vault 33 - Terminal Access</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2em;
+      line-height: 1.6;
+    }
+    .scanlines {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 0, 0.05),
+        rgba(0, 255, 0, 0.05) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      pointer-events: none;
+    }
+    .terminal {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #00ff00;
+      text-transform: uppercase;
+      border-bottom: 1px dashed #00ff00;
+      padding-bottom: 0.2em;
+      margin-bottom: 1em;
+    }
+    a {
+      color: #00ff00;
+      text-decoration: underline;
+    }
+    .prompt {
+      color: #00ff00;
+    }
+  </style>
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="terminal">
+    <h1>Vault 33 :: Terminal Access Interface</h1>
+
+    <p class="prompt">> Welcome, Overseer.</p>
+
+    <p>The year is 2285. The HYPR signal pulses across the Mojave, corrupting minds and machines alike. Vault 33 has reactivated its security terminals to counter the threat. Your mission begins now.</p>
+
+    <p class="prompt">> Status: HYPR Adversary Detected</p>
+    <p>Codename: <strong>Hypnotic Prince</strong><br>
+    Threat Level: Escalating<br>
+    Vector: Social Engineering, Fileless Malware, Rogue Automation</p>
+
+    <p class="prompt">> Available Operations</p>
+    <ul>
+      <li><a href="/challenges">🟢 Access Challenge Briefings</a></li>
+      <li><a href="/scoreboard">🟢 View Scoreboard</a></li>
+      <li><a href="/rules">🟢 Review Vault Protocols (Rules)</a></li>
+    </ul>
+
+    <p class="prompt">> Notice:</p>
+    <p>Advanced operators may uncover <em>bonus objectives</em> embedded in terminal logs, firmware snapshots, and distress beacons.</p>
+
+    <p class="prompt">> Proceed with caution.<br>May your wit be as sharp as your trigger.</p>
+
+    <p class="prompt">> END OF TRANSMISSION_</p>
+  </div>
+</body>
+</html>
