@@ -15,99 +15,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  overlay.addEventListener("click", () => {
-    overlay.style.display = "none";
-    terminal.style.display = "block";
-
-    // Wait for typing to finish before enabling menu navigation
-    const observer = new MutationObserver(() => {
-      const lastLine = document.querySelector(".typewriter-line:last-of-type");
-      if (lastLine && lastLine.textContent.trim().endsWith("_")) {
-        menuItems = document.querySelectorAll(".menu-item");
-        updateSelection(currentIndex);
-        menuItems.forEach((item) => {
-          const text = item.textContent.trim().replace("[LOCKED] ", "");
-          if (sessionStorage.getItem(text) === "read") {
-            item.classList.add("read");
-          }
-        });
-        observer.disconnect();
-      }
-    });
-
-    observer.observe(terminal, { childList: true, subtree: true });
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (!menuItems || menuItems.length === 0) return;
-
-    // Prevent ENTER on locked items
-    if (e.key === "Enter" && menuItems[currentIndex].classList.contains("locked")) {
-      const flash = document.createElement("div");
-      flash.style.position = "fixed";
-      flash.style.top = 0;
-      flash.style.left = 0;
-      flash.style.width = "100vw";
-      flash.style.height = "100vh";
-      flash.style.background = "#0f0f0f";
-      flash.style.color = "#00ff00";
-      flash.style.display = "flex";
-      flash.style.alignItems = "center";
-      flash.style.justifyContent = "center";
-      flash.style.fontSize = "3rem";
-      flash.style.fontFamily = "'VT323', monospace";
-      flash.style.textShadow = "0 0 3px #00ff00, 0 0 6px #00ff00";
-      flash.style.zIndex = 6000;
-      flash.innerHTML = `<div style='text-align:center;'>
-      <h1 style='font-size:2em;'>> ACCESS DENIED</h1>
-      <p style='margin-top:1em;'>First things first.</p>
-      <p>Return to menu...</p>
-    </div>`;
-      document.body.appendChild(flash);
-      setTimeout(() => flash.remove(), 2000);
+  function activateMenuItem(index) {
+    if (menuItems[index].classList.contains("locked")) {
+      window.location.href = "access-denied.html";
       return;
     }
 
-    if (e.key === "ArrowDown") {
-      currentIndex = (currentIndex + 1) % menuItems.length;
-      updateSelection(currentIndex);
-        menuItems.forEach((item) => {
-          const text = item.textContent.trim().replace("[LOCKED] ", "");
-          if (sessionStorage.getItem(text) === "read") {
-            item.classList.add("read");
-          }
-        });
-      navSound.currentTime = 0;
-      navSound.play();
-    } else if (e.key === "ArrowUp") {
-      currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length;
-      updateSelection(currentIndex);
-        menuItems.forEach((item) => {
-          const text = item.textContent.trim().replace("[LOCKED] ", "");
-          if (sessionStorage.getItem(text) === "read") {
-            item.classList.add("read");
-          }
-        });
-      navSound.currentTime = 0;
-      navSound.play();
-    } else if (e.key === "Enter") {
-      selectSound.play();
-      const selectedText = menuItems[currentIndex].textContent.trim();
-      const flash = document.createElement("div");
-      flash.style.position = "fixed";
-      flash.style.top = 0;
-      flash.style.left = 0;
-      flash.style.width = "100vw";
-      flash.style.height = "100vh";
-      flash.style.background = "#00ff00";
-      flash.style.zIndex = 5000;
-      flash.style.opacity = 1;
-      flash.style.transition = "opacity 0.4s ease-out";
-      document.body.appendChild(flash);
-      setTimeout(() => {
-        flash.style.opacity = 0;
-        setTimeout(() => flash.remove(), 400);
-        if (selectedText === "Rules & Access Protocols") {
+    selectSound.play();
+    const selectedText = menuItems[index].textContent.trim();
+
+    const flash = document.createElement("div");
+    flash.style.position = "fixed";
+    flash.style.top = 0;
+    flash.style.left = 0;
+    flash.style.width = "100vw";
+    flash.style.height = "100vh";
+    flash.style.background = "#00ff00";
+    flash.style.zIndex = 5000;
+    flash.style.opacity = 1;
+    flash.style.transition = "opacity 0.4s ease-out";
+    document.body.appendChild(flash);
+
+    setTimeout(() => {
+      flash.style.opacity = 0;
+      setTimeout(() => flash.remove(), 400);
+
+      if (selectedText === "Rules & Access Protocols") {
         const brief = document.querySelector(".menu-item.locked");
         if (brief && brief.textContent.includes("Vault Intelligence Brief")) {
           brief.textContent = "Vault Intelligence Brief";
@@ -120,11 +53,61 @@ document.addEventListener("DOMContentLoaded", () => {
           item.classList.remove("locked");
         });
       }
+
       sessionStorage.setItem(selectedText, "read");
-      menuItems[currentIndex].classList.add("read");
+      menuItems[index].classList.add("read");
 
       alert(`Selected: ${selectedText}`);
-      }, 150);
+    }, 150);
+  }
+
+  overlay.addEventListener("click", () => {
+    overlay.style.display = "none";
+    terminal.style.display = "block";
+
+    const observer = new MutationObserver(() => {
+      const lastLine = document.querySelector(".typewriter-line:last-of-type");
+      if (lastLine && lastLine.textContent.trim().endsWith("END OF TRANSMISSION")) {
+        menuItems = document.querySelectorAll(".menu-item");
+        updateSelection(currentIndex);
+        menuItems.forEach((item, i) => {
+          const text = item.textContent.trim().replace("[LOCKED] ", "");
+          if (sessionStorage.getItem(text) === "read") {
+            item.classList.add("read");
+          }
+
+          item.addEventListener("touchstart", () => {
+            updateSelection(i);
+            activateMenuItem(i);
+          });
+
+          item.addEventListener("click", () => {
+            updateSelection(i);
+            activateMenuItem(i);
+          });
+        });
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(terminal, { childList: true, subtree: true });
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!menuItems || menuItems.length === 0) return;
+
+    if (e.key === "ArrowDown") {
+      currentIndex = (currentIndex + 1) % menuItems.length;
+      updateSelection(currentIndex);
+      navSound.currentTime = 0;
+      navSound.play();
+    } else if (e.key === "ArrowUp") {
+      currentIndex = (currentIndex - 1 + menuItems.length) % menuItems.length;
+      updateSelection(currentIndex);
+      navSound.currentTime = 0;
+      navSound.play();
+    } else if (e.key === "Enter") {
+      activateMenuItem(currentIndex);
     }
   });
 });
