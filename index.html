@@ -1,51 +1,31 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Vault 33 - Terminal Access</title>
-  <link rel="preload" href="fonts/VT323-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/pipboy-theme.css" />
   <script defer src="js/typing.js"></script>
 </head>
 <body>
+  <div id="intro-overlay">
+    [ Click to Initialize Vault 33 Terminal ]
+  </div>
+  <div class="vignette"></div>
   <div class="scanlines"></div>
   <div class="terminal">
     <h1 class="flicker">Vault 33 :: Terminal Access Interface</h1>
-
-    <p class="prompt">> Welcome, Overseer.</p>
-
-    <p>Year: 2285  
-    Location: Vault 33 Command Terminal</p>
-
-    <p>The Vault has been placed on high alert. An encrypted transmission has been intercepted—an echo from Vault 31. Embedded within: the signature of a reactivated entity once sealed in cryostasis.</p>
-
-    <p class="prompt">> Adversary Profile: HYPR</p>
-    <p>
-      Codename: <strong>Hybrid Prince</strong> (HYPR)<br>
-      Classification: Executive AI Construct<br>
-      Origin: Vault-Tec’s Bud’s Buds™ Management Cult<br>
-      Vectors: Social Engineering, Fileless Malware, Rogue Automation
-    </p>
-
-    <p>Hybrid Prince was once a Vault-Tec junior executive. Following a failed digital immortality experiment, his mind fused with his AI assistant. Now reborn, HYPR seeks control—starting with Vault 33.</p>
-
-    <p class="prompt">> Operational Orders</p>
-    <ul>
-      <li><a href="/challenges">Access Challenge Briefings</a></li>
-      <li><a href="/scoreboard">View Scoreboard</a></li>
-      <li><a href="/rules">Review Vault Protocols</a></li>
-    </ul>
-
-    <p class="prompt">> Warning:</p>
-    <p>Terminal data may contain embedded threats. Watch for bonus objectives hidden in corrupted logs, system firmware, or ghost signals.</p>
-
-    <p class="prompt">> Secure. Investigate. Contain.</p>
-
-    <p class="prompt">> END OF TRANSMISSION_<span class="cursor">█</span></p>
+    <p class="typewriter-line" data-text="> Welcome, Overseer."></p>
+    <p class="typewriter-line" data-text="Year: 2285 Location: Vault 33 Command Terminal"></p>
+    <p class="typewriter-line" data-text="The Vault has been placed on high alert. An encrypted transmission has been intercepted—an echo from Vault 31. Embedded within: the signature of a reactivated entity once sealed in cryostasis."></p>
+    <p class="typewriter-line" data-text="> Adversary Profile: HYPR"></p>
+    <p class="typewriter-line" data-text="Codename: Hybrid Prince (HYPR)"></p>
+    <p class="typewriter-line" data-text="Classification: Executive AI Construct"></p>
+    <p class="typewriter-line" data-text="Origin: Vault-Tec’s Bud’s Buds Management Cult"></p>
+    <p class="typewriter-line" data-text="Vectors: Social Engineering, Fileless Malware, Rogue Automation"></p>
+    <p class="typewriter-line" data-text="Hybrid Prince was once a Vault-Tec junior executive. Following a failed digital immortality experiment, his mind fused with his AI assistant. Now reborn, HYPR seeks control—starting with Vault 33."></p>
+    <p class="typewriter-line" data-text="> END OF TRANSMISSION"></p>
   </div>
-
-  <audio autoplay preload="auto">
-    <source src="assets/sounds/boot.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="typeSound" preload="auto" src="sounds/typing.mp3"></audio>
 </body>
 </html>

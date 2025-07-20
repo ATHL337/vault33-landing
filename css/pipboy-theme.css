@@ -1,62 +1,56 @@
+
+/* ================================
+   Pip-Boy Terminal Theme (Ultra-Fine Tuned)
+   ================================ */
+
 @font-face {
   font-family: 'VT323';
   src: url('../fonts/VT323-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+padding: 0;
+  overflow-x: hidden;
+  background-color: #0f0f0f;
+  font-family: 'VT323', monospace;
+  color: #00ff00;
+  font-size: 24px;
+  line-height: 1.15;
+  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
   font-family: 'VT323', monospace;
   background-color: #0f0f0f;
   color: #00ff00;
-  font-size: 1.6em;
-  line-height: 1.75;
   margin: 0;
-  padding: 2em;
-  text-shadow: 0 0 2px #00ff00;
+padding: 0;
+  font-size: 24px;
+  line-height: 1.15;
+  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
 }
 
 .terminal {
+  margin: 2em auto;
+  background-color: #0a0f0a;
+  padding: 2em;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 30px #00ff00;
+  border-radius: 12px;
+
+  white-space: pre-wrap;
   max-width: 960px;
-  margin: auto;
-}
-
-h1 {
-  text-transform: uppercase;
-  border-bottom: 1px dashed #00ff00;
-  padding-bottom: 0.3em;
-  margin-bottom: 1em;
-}
-
-a {
-  color: #00ff00;
-  text-decoration: underline;
-}
-a:hover {
-  text-shadow: 0 0 5px #0f0;
-}
-
-.prompt {
-  color: #00ff00;
-}
-
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-  20%, 24%, 55% { opacity: 0.7; }
-}
-.flicker {
-  animation: flicker 1.5s infinite alternate;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-.cursor {
-  display: inline-block;
-  animation: blink 1s infinite;
-  font-weight: bold;
+  margin: 0 auto;
 }
 
 .scanlines {
@@ -72,4 +66,95 @@ a:hover {
   );
   pointer-events: none;
   z-index: 1000;
+}
+
+h1.flicker {
+  font-size: 2.4em;
+  margin-top: 0.25em;
+  margin-bottom: 0.05em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 2px dashed #00ff00;
+  padding-bottom: 0.25em;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.7; }
+}
+
+.typewriter-line {
+  display: block;
+  margin: 0.1em 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0.25em 0 0.25em 2em;
+}
+
+li {
+  list-style-type: square;
+  margin: 0.1em 0;
+}
+
+/* Special style for terminal commands */
+p.typewriter-line[data-text^=">"] {
+  font-weight: bold;
+  color: #66ff66;
+}
+
+/* Links */
+a {
+  color: #00ffff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #fffd82;
+}
+
+.section-break {
+  margin: 1em 0;
+  border-bottom: 1px dashed #00ff00;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+#intro-overlay {
+  position: fixed;
+  z-index: 2000;
+  background: #0f0f0f;
+  color: #00ff00;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  cursor: pointer;
+  text-shadow: 0 0 4px #00ff00;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
+  z-index: 999;
 }
