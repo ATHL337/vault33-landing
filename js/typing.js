@@ -36,7 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cursor = document.createElement("span");
     cursor.className = "cursor";
     cursor.textContent = "_";
-    terminal.appendChild(cursor);
+    line.textContent = "";
+    line.appendChild(cursor);
+
   }
 
   overlay.addEventListener("click", () => {
