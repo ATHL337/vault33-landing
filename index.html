@@ -6,25 +6,25 @@
   <title>Vault 33 - Terminal Access</title>
   <link rel="stylesheet" href="css/pipboy-theme.css" />
   <script defer src="js/typing.js"></script>
+  <script defer src="js/menu.js"></script>
 </head>
 <body>
   <div id="intro-overlay">
-    [ Click to Initialize Vault 33 Terminal ]
+    <span class="click-text">[ Click to Initialize Vault 33 Terminal ]</span>
   </div>
   <div class="vignette"></div>
   <div class="scanlines"></div>
-  <div class="terminal">
+  <div class="terminal" style="display: none;">
     <h1 class="flicker">Vault 33 :: Terminal Access Interface</h1>
+
     <p class="typewriter-line" data-text="> Welcome, Overseer."></p>
     <p class="typewriter-line" data-text="Year: 2285 Location: Vault 33 Command Terminal"></p>
-    <p class="typewriter-line" data-text="The Vault has been placed on high alert. An encrypted transmission has been intercepted—an echo from Vault 31. Embedded within: the signature of a reactivated entity once sealed in cryostasis."></p>
-    <p class="typewriter-line" data-text="> Adversary Profile: HYPR"></p>
-    <p class="typewriter-line" data-text="Codename: Hybrid Prince (HYPR)"></p>
-    <p class="typewriter-line" data-text="Classification: Executive AI Construct"></p>
-    <p class="typewriter-line" data-text="Origin: Vault-Tec’s Bud’s Buds Management Cult"></p>
-    <p class="typewriter-line" data-text="Vectors: Social Engineering, Fileless Malware, Rogue Automation"></p>
-    <p class="typewriter-line" data-text="Hybrid Prince was once a Vault-Tec junior executive. Following a failed digital immortality experiment, his mind fused with his AI assistant. Now reborn, HYPR seeks control—starting with Vault 33."></p>
-    <p class="typewriter-line" data-text="> END OF TRANSMISSION"></p>
+    <p class="typewriter-line" data-text="> Select an option below to proceed:"></p>
+    <p class="typewriter-line menu-item selected" data-text="Rules"></p>
+    <p class="typewriter-line menu-item" data-text="Challenges"></p>
+    <p class="typewriter-line menu-item" data-text="Scoreboard"></p>
+    <p class="typewriter-line menu-item" data-text="Vault Protocols"></p>
+    <p class="typewriter-line" data-text="> END OF TRANSMISSION_"></p>
   </div>
   <audio id="typeSound" preload="auto" src="sounds/typing.mp3"></audio>
 </body>
