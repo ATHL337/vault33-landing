@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const lines = document.querySelectorAll(".typewriter-line");
   const typeSound = document.getElementById("typeSound");
-  const overlay = document.getElementById("intro-overlay");
-  const terminal = document.querySelector(".terminal");
-
   let current = 0;
 
   async function typeLine(element) {
@@ -17,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
           typeSound.currentTime = 0;
           typeSound.play();
         } catch (err) {
-          // autoplay suppression
+          // Autoplay might be blocked, ignore
         }
       }
       await new Promise((r) => setTimeout(r, 25));
@@ -31,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
       await new Promise((r) => setTimeout(r, 300));
     }
 
-    // Blinking cursor at the end of the last line
     const lastLine = lines[lines.length - 1];
     const cursor = document.createElement("span");
     cursor.className = "cursor";
@@ -39,13 +35,5 @@ document.addEventListener("DOMContentLoaded", () => {
     lastLine.appendChild(cursor);
   }
 
-  // If intro-overlay exists, wait for click; otherwise start automatically
-  if (overlay) {
-    overlay.addEventListener("click", () => {
-      overlay.style.display = "none";
-      typeAll();
-    });
-  } else {
-    typeAll();
-  }
+  typeAll();
 });

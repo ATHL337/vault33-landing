@@ -1,5 +1,5 @@
 /* ================================
-   Pip-Boy Terminal Theme (Ultra-Fine Tuned)
+   Pip-Boy Terminal Theme (Refined)
    ================================ */
 
 @font-face {
@@ -9,145 +9,48 @@
   font-style: normal;
 }
 
-html, html, html, body {
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   height: 100%;
+  overflow: hidden;
 }
+
 body {
-  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
   overflow-x: hidden;
   background-color: #0f0f0f;
   color: #00ff00;
   font-family: 'VT323', monospace;
   font-size: 24px;
-  line-height: 1.15;
-  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
-  display: grid;
-  place-items: center;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  height: 100%;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  height: 100%;
-}
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  background-color: #0f0f0f;
-  color: #00ff00;
-  font-family: 'VT323', monospace;
-  font-size: 24px;
-  line-height: 1.15;
-  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
-  display: grid;
-  place-items: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #0f0f0f;
-  color: #00ff00;
-  font-family: 'VT323', monospace;
-  font-size: 24px;
-  line-height: 1.15;
-  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html, html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  height: 100%;
-}
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  background-color: #0f0f0f;
-  color: #00ff00;
-  font-family: 'VT323', monospace;
-  font-size: 24px;
-  line-height: 1.15;
-  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
-  display: grid;
-  place-items: center;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  height: 100%;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  height: 100%;
-}
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  background-color: #0f0f0f;
-  color: #00ff00;
-  font-family: 'VT323', monospace;
-  font-size: 24px;
-  line-height: 1.15;
-  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
-  display: grid;
-  place-items: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #0f0f0f;
-  color: #00ff00;
-  font-family: 'VT323', monospace;
-  font-size: 24px;
-  line-height: 1.15;
+  line-height: 1.2;
   text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 100vh;
-  margin: 0;
-padding: 0;
-  overflow-x: hidden;
-  background-color: #0f0f0f;
-  font-family: 'VT323', monospace;
-  color: #00ff00;
-  font-size: 24px;
-  line-height: 1.15;
-  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
-  font-family: 'VT323', monospace;
-  background-color: #0f0f0f;
-  color: #00ff00;
-  margin: 0;
-padding: 0;
-  font-size: 24px;
-  line-height: 1.15;
-  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
 }
 
+/* Terminal box */
 .terminal {
-  margin: 2em auto;
   background-color: #0a0f0a;
-  padding: 2em;
+  padding: 1.5em;
   border: 2px solid #00ff00;
   box-shadow: 0 0 30px #00ff00;
   border-radius: 12px;
-
+  max-width: 90vw;
+  max-height: 95vh;
+  overflow-y: auto;
   white-space: pre-wrap;
-  max-width: 960px;
-  margin: 0 auto;
+  margin: 2em auto;
+  box-sizing: border-box;
 }
 
+/* CRT scanlines */
 .scanlines {
   position: fixed;
   width: 100%;
@@ -163,10 +66,19 @@ padding: 0;
   z-index: 1000;
 }
 
+/* Screen vignette */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
+  z-index: 999;
+}
+
+/* Header flicker effect */
 h1.flicker {
   font-size: 2.4em;
-  margin-top: 0.25em;
-  margin-bottom: 0.05em;
+  margin: 0.25em 0;
   text-transform: uppercase;
   letter-spacing: 2px;
   border-bottom: 2px dashed #00ff00;
@@ -179,55 +91,11 @@ h1.flicker {
   20%, 24%, 55% { opacity: 0.7; }
 }
 
+/* Typing line spacing */
 .typewriter-line {
+  margin: 0.1em 0;
+  padding: 0;
   display: block;
-  margin: 0.1em 0;
-}
-
-p {
-  margin: 0;
-}
-
-ul {
-  margin: 0.25em 0 0.25em 2em;
-}
-
-li {
-  list-style-type: square;
-  margin: 0.1em 0;
-}
-
-/* Special style for terminal commands */
-p.typewriter-line[data-text^=">"] {
-  font-weight: bold;
-  color: #66ff66;
-}
-
-/* Links */
-a {
-  color: #00ffff;
-  text-decoration: underline;
-}
-
-a:hover {
-  background-color: #00ff00;
-  color: #000;
-  padding: 0 0.25em;
-  text-decoration: none;
-}
-
-a.selected {
-  background-color: #00ff00;
-  color: #000;
-  padding: 0 0.25em;
-  text-decoration: none;
-}
-  color: #fffd82;
-}
-
-.section-break {
-  margin: 1em 0;
-  border-bottom: 1px dashed #00ff00;
 }
 
 .cursor {
@@ -240,105 +108,15 @@ a.selected {
   50% { opacity: 0; }
 }
 
-#intro-overlay {
-  color: #00ff00;
-  cursor: pointer;
-  padding: 0.25em 0.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  text-align: center;
-  font-size: 32px;
-  text-shadow: 0 0 4px #00ff00;
-  background-color: #0f0f0f;
-  position: fixed;
-  z-index: 2000;
-  transition: all 0.2s ease;
-
-  color: #00ff00;
-  cursor: pointer;
-  padding: 0.25em 0.5em;
-  display: inline-block;
-  border: 2px solid transparent;
-  transition: all 0.2s ease;
-
-  position: fixed;
-  z-index: 2000;
-  background: #0f0f0f;
-  color: #00ff00;
-  font-size: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  text-align: center;
-  cursor: pointer;
-  text-shadow: 0 0 4px #00ff00;
-}
-
-.vignette {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
-  z-index: 999;
-}
-
-#intro-overlay:hover {
-  background-color: #00ff00;
-  color: #000;
-  text-shadow: none;
-}
-
-
-#intro-overlay:hover {
-  background-color: #00ff00;
-  color: #000;
-  text-shadow: none;
-}
-
-
-.click-text {
-  padding: 0.25em 0.5em;
-  transition: all 0.2s ease;
-}
-
-.click-text:hover {
-  display: inline-block;
-  background-color: #00ff00;
-  color: #000;
-  padding: 0 0.2em;
-  border: 1px solid #00ff00;
-  text-shadow: none;
-  border-radius: 0;
-  box-sizing: border-box;
-
-  display: inline-block;
-  background-color: #00ff00;
-  color: #000;
-  padding: 0.1em 0.25em;
-  border: 2px solid #00ff00;
-  text-shadow: none;
-  border-radius: 2px;
-
-  background-color: #00ff00;
-  color: #000;
-  text-shadow: none;
-}
-
+/* Menu items */
 .menu {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin-top: 1em;
 }
 
 .menu-item {
-  margin: 0.2em 0;
+  margin: 0.15em 0;
   padding: 0.1em 0.5em;
 }
 
@@ -346,25 +124,83 @@ a.selected {
   background-color: #00ff00;
   color: #000;
   border: 1px solid #00ff00;
-  display: block;
   width: 100%;
   white-space: pre;
-  padding: 0 0.25em;
   box-sizing: border-box;
-  margin: 0;
-
-  background-color: #00ff00;
-  color: #000;
 }
-
 
 .menu-item.locked {
   color: #555;
   font-style: italic;
 }
 
-
 .menu-item.read:not(.selected) {
   color: #00cc00;
   font-style: italic;
+}
+
+/* Bold indicator lines */
+p.typewriter-line[data-text^=">"] {
+  font-weight: bold;
+  color: #66ff66;
+}
+
+/* Hoverable prompts */
+.click-text {
+  padding: 0.25em 0.5em;
+  transition: all 0.2s ease;
+}
+
+.click-text:hover,
+a:hover,
+a.selected {
+  background-color: #00ff00;
+  color: #000;
+  padding: 0 0.25em;
+  text-decoration: none;
+}
+
+a {
+  color: #00ffff;
+  text-decoration: underline;
+}
+
+/* Overlay intro */
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #00ff00;
+  text-shadow: 0 0 4px #00ff00;
+  cursor: pointer;
+  z-index: 2000;
+  transition: all 0.2s ease;
+}
+
+#intro-overlay:hover {
+  background-color: #00ff00;
+  color: #000;
+  text-shadow: none;
+}
+
+/* List item spacing */
+ul {
+  margin: 0.25em 0 0.5em 1.5em;
+  padding: 0;
+}
+
+li.typewriter-line {
+  margin: 0.15em 0;
+  padding-left: 0.5em;
+}
+
+li.typewriter-line::marker {
+  content: "> ";
 }

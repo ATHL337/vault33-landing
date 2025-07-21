@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vault 33 – Challenge Terminals</title>
+  <link rel="stylesheet" href="css/pipboy-theme.css" />
+</head>
+<body>
+  <div class="vignette"></div>
+  <div class="scanlines"></div>
+
+  <div class="terminal">
+    <h1 class="flicker">Vault 33 :: Challenge Terminals</h1>
+    <div id="challenge-log">
+      <p class="typewriter-line" data-text="> Booting secure simulation interfaces..."></p><p class="typewriter-line" data-text="> Scenario: HYPR Intrusion Detected :: Protocol Ghost Pine"></p>
+      <p class="typewriter-line" data-text="Live Challenges:"></p>
+      <p class="typewriter-line menu-item selected" data-text="Terminal 01: Lateral Movement - The Bullseye Printer"></p><p class="typewriter-line menu-item locked" data-text="[LOCKED] Terminal 02: PowerShell Payload Reversal"></p><p class="typewriter-line menu-item locked" data-text="[LOCKED] Terminal 03: Zeek Log Puzzle - Pine Outage"></p><p class="typewriter-line menu-item locked" data-text="[LOCKED] Terminal 04: AI Threat Reversal - Decoder"></p>
+      <p class="typewriter-line" data-text="> Use keyboard or click to engage. Return to menu to log progress."></p>
+      <p class="typewriter-line" data-text="> END OF TRANSMISSION"></p>
+    </div>
+  </div>
+
+  <audio id="typeSound" preload="auto" src="sounds/typing.mp3"></audio>
+
+  <script src="js/typing.js"></script>
+  <script src="js/menu.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuItems = document.querySelectorAll(".menu-item");
+
+      menuItems.forEach(item => {
+        item.addEventListener("click", () => {
+          const text = item.textContent.trim();
+          if (item.classList.contains("locked")) {
+            window.location.href = "access-denied.html";
+          } else {
+            sessionStorage.setItem(text, "read");
+            alert(`Engaging ${text}...`); // Replace with actual page redirect in future
+            // Example: window.location.href = `terminals/${text.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.html`;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
