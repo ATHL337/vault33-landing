@@ -27,13 +27,20 @@ body {
   color: #00ff00;
   font-family: 'VT323', monospace;
   font-size: 24px;
-  line-height: 1.2;
+  line-height: .5;
   text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
+
+.section-break {
+  color: #009900;
+  margin: 0.75em 0;
+  letter-spacing: 2px;
+}
+
 
 /* Terminal box */
 .terminal {
@@ -192,13 +199,13 @@ a {
 
 /* List item spacing */
 ul {
-  margin: 0.25em 0 0.5em 1.5em;
+  margin: 0.0em 0 0.0em 0em;
   padding: 0;
 }
 
 li.typewriter-line {
-  margin: 0.15em 0;
-  padding-left: 0.5em;
+  margin: 0.0em 0;
+  padding-left: 0.0em;
 }
 
 li.typewriter-line::marker {

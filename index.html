@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,22 +8,68 @@
   <script defer src="js/menu.js"></script>
 </head>
 <body>
-  
+
+  <!-- Intro Overlay -->
   <div id="intro-overlay">
     <div class="vignette"></div>
     <div class="scanlines"></div>
     <h1 class="flicker">[ Click to Initialize Vault 33 Terminal ]</h1>
   </div>
+
+  <!-- Main Interface -->
   <div class="vignette"></div>
   <div class="scanlines"></div>
+
   <div class="terminal" style="display: none;">
     <h1 class="flicker">Vault 33 :: Terminal Access Interface</h1>
+
     <p class="typewriter-line" data-text="> Welcome, Overseer."></p>
-    <p class="typewriter-line" data-text="Year: 2285 Location: Vault 33 Command Terminal"></p>
+    <p class="typewriter-line" data-text="Year: 2285  Location: Vault 33 Command Terminal"></p>
+
+    <p class="typewriter-line section-break" data-text="------------------------------------------------"></p>
+
     <p class="typewriter-line" data-text="> Please select an operational function:"></p>
-    <p class="typewriter-line menu-item selected" data-text="Rules & Access Protocols"></p><p class="typewriter-line menu-item locked" data-text="[LOCKED] Vault Intelligence Brief"></p><p class="typewriter-line menu-item locked" data-text="[LOCKED] Challenge Terminals"></p><p class="typewriter-line menu-item locked" data-text="[LOCKED] Scoreboard"></p>
+    <ul class="menu">
+      <li class="typewriter-line menu-item selected" data-text="Rules & Access Protocols"></li>
+      <li class="typewriter-line menu-item locked" data-text="[LOCKED] Vault Intelligence Brief"></li>
+      <li class="typewriter-line menu-item locked" data-text="[LOCKED] Challenge Terminals"></li>
+      <li class="typewriter-line menu-item locked" data-text="[LOCKED] Scoreboard"></li>
+    </ul>
+
+    <p class="typewriter-line section-break" data-text="------------------------------------------------"></p>
+
     <p class="typewriter-line" data-text="> END OF TRANSMISSION"></p>
   </div>
+
   <audio id="typeSound" preload="auto" src="sounds/typing.mp3"></audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('intro-overlay');
+      const terminal = document.querySelector('.terminal');
+
+      overlay.addEventListener('click', () => {
+        overlay.style.display = 'none';
+        terminal.style.display = 'block';
+      });
+
+      const menuItems = document.querySelectorAll('.menu-item');
+      menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const text = item.textContent.trim();
+          switch (text) {
+            case 'Rules & Access Protocols':
+              window.location.href = 'rules.html';
+              break;
+            default:
+              if (item.classList.contains('locked')) {
+                window.location.href = 'access-denied.html';
+              }
+              break;
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
