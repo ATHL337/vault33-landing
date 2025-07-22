@@ -1,0 +1,214 @@
+/* ================================
+   Pip-Boy Terminal Theme (Refined)
+   ================================ */
+
+@font-face {
+  font-family: 'VT323';
+  src: url('../fonts/VT323-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #0f0f0f;
+  color: #00ff00;
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  line-height: 1.6;
+  text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.section-break {
+  color: #009900;
+  margin: 1em 0;
+  letter-spacing: 2px;
+}
+
+/* Terminal box */
+.terminal {
+  background-color: #0a0f0a;
+  padding: 1.5em;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 30px #00ff00;
+  border-radius: 12px;
+  max-width: 90vw;
+  max-height: 95vh;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  margin: 2em auto;
+  box-sizing: border-box;
+}
+
+/* CRT scanlines */
+.scanlines {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 0, 0.05),
+    rgba(0, 255, 0, 0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Screen vignette */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.6) 100%);
+  z-index: 999;
+}
+
+/* Header flicker effect */
+h1.flicker {
+  font-size: 2.4em;
+  margin: 0.25em 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 2px dashed #00ff00;
+  padding-bottom: 0.25em;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.7; }
+}
+
+/* Typing line spacing */
+.typewriter-line {
+  display: block;
+  margin-bottom: 0.5em;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Menu items */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 1em;
+}
+
+.menu-item {
+  margin: 0.15em 0;
+  padding: 0.1em 0.5em;
+}
+
+.menu-item.selected {
+  background-color: #00ff00;
+  color: #000;
+  border: 1px solid #00ff00;
+  width: 100%;
+  white-space: pre;
+  box-sizing: border-box;
+}
+
+.menu-item.locked {
+  color: #555;
+  font-style: italic;
+}
+
+.menu-item.read:not(.selected) {
+  color: #00cc00;
+  font-style: italic;
+}
+
+/* Bold indicator lines */
+p.typewriter-line[data-text^=">"] {
+  font-weight: bold;
+  color: #66ff66;
+}
+
+/* Hoverable prompts */
+.click-text {
+  padding: 0.25em 0.5em;
+  transition: all 0.2s ease;
+}
+
+.click-text:hover,
+a:hover,
+a.selected {
+  background-color: #00ff00;
+  color: #000;
+  padding: 0 0.25em;
+  text-decoration: none;
+}
+
+a {
+  color: #00ffff;
+  text-decoration: underline;
+}
+
+/* Overlay intro */
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f0f0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #00ff00;
+  text-shadow: 0 0 4px #00ff00;
+  cursor: pointer;
+  z-index: 2000;
+  transition: all 0.2s ease;
+}
+
+#intro-overlay:hover {
+  background-color: #00ff00;
+  color: #000;
+  text-shadow: none;
+}
+
+/* List item spacing */
+ul {
+  margin: 0.5em 0 1em 1.5em;
+  padding: 0;
+}
+
+li.typewriter-line {
+  margin-bottom: 0.4em;
+  padding-left: 0.5em;
+  line-height: 1.6;
+}
+
+li.typewriter-line::marker {
+  content: "> ";
+}
