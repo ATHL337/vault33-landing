@@ -2,29 +2,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const lines = document.querySelectorAll(".typewriter-line");
   const typeSound = document.getElementById("typeSound");
   let current = 0;
+  let skip = false;
 
-  async function typeLine(element) {
-    const text = element.dataset.text;
-    element.textContent = "";
+  function typeLine(element) {
+    return new Promise((resolve) => {
+      const text = element.dataset.text;
+      element.textContent = "";
 
-    for (let i = 0; i < text.length; i++) {
-      element.textContent += text[i];
-      if (typeSound) {
-        try {
-          typeSound.currentTime = 0;
-          typeSound.play();
-        } catch (err) {
-          // Autoplay might be blocked, ignore
+      let i = 0;
+      const interval = setInterval(() => {
+        if (skip || i >= text.length) {
+          element.textContent = text;
+          clearInterval(interval);
+          resolve();
+        } else {
+          element.textContent += text[i];
+          if (typeSound) {
+            try {
+              typeSound.currentTime = 0;
+              typeSound.play();
+            } catch (err) {}
+          }
+          i++;
         }
-      }
-      await new Promise((r) => setTimeout(r, 25));
-    }
+      }, 25);
+    });
   }
 
   async function typeAll() {
-    while (current < lines.length) {
+    for (; current < lines.length; current++) {
       await typeLine(lines[current]);
-      current++;
       await new Promise((r) => setTimeout(r, 300));
     }
 
@@ -34,6 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
     cursor.textContent = "_";
     lastLine.appendChild(cursor);
   }
+
+  // Skip logic
+  document.addEventListener("keydown", () => (skip = true));
+  document.addEventListener("click", () => (skip = true));
 
   typeAll();
 });
