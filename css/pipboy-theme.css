@@ -245,3 +245,10 @@ li.typewriter-line::marker {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #66ff66;
 }
+
+p.typewriter-line {
+  margin: 0;              /* Remove vertical gaps */
+  padding: 0.1em 0;       /* Minimal padding for legibility */
+  line-height: 1.2em;     /* Tighten spacing */
+}
+
